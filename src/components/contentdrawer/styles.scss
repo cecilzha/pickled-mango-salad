@@ -1,0 +1,25 @@
+@use '@carbon/react';
+@use '@carbon/styles/scss/themes';
+@use '@carbon/styles/scss/theme';
+
+.theme-section {
+  padding: 1.5rem;
+  background: theme.$background;
+  color: theme.$text-primary;
+  width: 33vw;
+  height: 93.5vh;
+
+  position: absolute;
+  right: 0px;
+  top: 48px;
+  margin: 0.5rem;
+}
+
+.clickable {
+  margin-top: 1em;
+  padding: 0;
+}
+
+.title {
+  padding:1em;
+}
