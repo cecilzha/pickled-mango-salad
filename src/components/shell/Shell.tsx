@@ -19,7 +19,7 @@ const Shell = () => {
             <HeaderName href="#" prefix="ဆွေမျိုးမေ့">
                 သရက်ချဉ်သုပ်
             </HeaderName>
-            <HeaderNavigation>
+            <HeaderNavigation aria-label="news genres">
                 <HeaderMenuItem isCurrentPage href="#">
                     ပြည်တွင်းရေးရာ
                 </HeaderMenuItem>
@@ -32,11 +32,11 @@ const Shell = () => {
                     tooltipAlignment="end">
                     <SettingsIcon size={20}/>
                 </HeaderGlobalAction>
-                <HeaderGlobalAction
-                    aria-label="Credits"
-                    tooltipAlignment="end">
-                    <Credentials size={20}/>
-                </HeaderGlobalAction>
+                {/*<HeaderGlobalAction*/}
+                {/*    aria-label="Credits"*/}
+                {/*    tooltipAlignment="end">*/}
+                {/*    <Credentials size={20}/>*/}
+                {/*</HeaderGlobalAction>*/}
                 <HeaderGlobalAction
                     aria-label="Credits"
                     tooltipAlignment="end">

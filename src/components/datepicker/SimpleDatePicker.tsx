@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from "react";
-import { DatePicker, DatePickerInput, Button } from '@carbon/react';
+import { DatePicker, DatePickerInput } from '@carbon/react';
 
 const SimpleDatePicker = () => {
     const [today, setToday] = useState<String>();
@@ -11,12 +11,17 @@ const SimpleDatePicker = () => {
 
     return (
         <>
-            <DatePicker locale="my" dateFormat="m/d/Y" datePickerType="single">
+            <DatePicker
+                locale="my"
+                dateFormat="m/d/Y"
+                datePickerType="single"
+            >
                 <DatePickerInput
                     id="date-picker-calendar-id"
                     placeholder="mm/dd/yyyy"
                     type="text"
                     value={today}
+                    opencalendar={""}
                 />
             </DatePicker>
         </>
@@ -24,4 +29,3 @@ const SimpleDatePicker = () => {
 }
 
 export default SimpleDatePicker;
-
