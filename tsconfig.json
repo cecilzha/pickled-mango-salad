@@ -10,6 +10,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -20,6 +23,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-  ]
+  "include": []
 }

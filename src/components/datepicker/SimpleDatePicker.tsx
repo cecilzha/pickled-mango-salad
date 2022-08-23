@@ -1,8 +1,8 @@
 import React, {useMemo, useState} from "react";
-import { DatePicker, DatePickerInput } from '@carbon/react';
+import { DatePicker, DatePickerInput } from 'carbon-components-react';
 
 const SimpleDatePicker = () => {
-    const [today, setToday] = useState<String>();
+    const [today, setToday] = useState<string>("");
 
     useMemo(() => {
         let date = new Date().toLocaleDateString();
@@ -21,7 +21,7 @@ const SimpleDatePicker = () => {
                     placeholder="mm/dd/yyyy"
                     type="text"
                     value={today}
-                    opencalendar={""}
+                    labelText={""}
                 />
             </DatePicker>
         </>

@@ -15,7 +15,7 @@ export const mapEventMoveSlice = createSlice({
     }
 })
 
-export const { hasBegunMoving, hasStoppedMoving } = mapEventMoveSlice.actions
+export const { hasBegunMoving } = mapEventMoveSlice.actions
 
 export const isMapMoving = (state: { mapEventMove: { isMoving: any } }) => state.mapEventMove.isMoving;
 

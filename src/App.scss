@@ -1,8 +1,5 @@
 @use '@carbon/react';
-@use '@carbon/styles/scss/themes';
 @use '@carbon/styles/scss/theme';
-
-
 
 .weather-widget {
   width: 300px;
@@ -15,7 +12,7 @@
   margin: 0.5rem;
 }
 
-.drop-down {
+.date-picker {
   width: 300px;
   height: 100px;
   position: absolute;
@@ -29,16 +26,8 @@
   width: 1vw;
 }
 
-.map-window {
-  z-index: -1;
-  position: relative;
-  width: 1vw;
-  height: 1vh;
-}
-
-.date-picker {
+.drop-down {
   width: 288px;
-  //height: 100px;
 
   position: absolute;
   bottom: 0;

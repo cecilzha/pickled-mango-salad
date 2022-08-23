@@ -5,19 +5,18 @@ import {
     HeaderName,
     HeaderNavigation,
     HeaderMenuItem,
-} from '@carbon/react';
-
+} from 'carbon-components-react';
 import {
-    Switcher as SwitcherIcon,
-    Credentials,
     Information,
     Settings as SettingsIcon } from '@carbon/icons-react';
+
+import { PLATFORM_NAME, CREATOR_NAME } from "../../constants/constants";
 
 const Shell = () => {
     return (
         <Header aria-label="Platform Name">
-            <HeaderName href="#" prefix="ဆွေမျိုးမေ့">
-                သရက်ချဉ်သုပ်
+            <HeaderName href="#" prefix={CREATOR_NAME}>
+                {PLATFORM_NAME}
             </HeaderName>
             <HeaderNavigation aria-label="news genres">
                 <HeaderMenuItem isCurrentPage href="#">
@@ -32,11 +31,6 @@ const Shell = () => {
                     tooltipAlignment="end">
                     <SettingsIcon size={20}/>
                 </HeaderGlobalAction>
-                {/*<HeaderGlobalAction*/}
-                {/*    aria-label="Credits"*/}
-                {/*    tooltipAlignment="end">*/}
-                {/*    <Credentials size={20}/>*/}
-                {/*</HeaderGlobalAction>*/}
                 <HeaderGlobalAction
                     aria-label="Credits"
                     tooltipAlignment="end">

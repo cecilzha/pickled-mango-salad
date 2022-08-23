@@ -1,71 +1,76 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { REGIONS, Region } from '../../constants/constants'
+
+const regions : Map<string, Region> = REGIONS
+const ZOOM_BACK : number = 5
+const ZOOM_TO_REGION : number = 7
 
 export const mapCenterSlice = createSlice({
     name: 'mapCenter',
     initialState: {
-        center: [96.199379, 16.871311],
-        zoom: 5
+        center: regions.get("overall")?.coordinate,
+        zoom: ZOOM_BACK
     },
     reducers: {
         flyToKachin: state => {
-            state.center = [97.344060, 26.076080]
-            state.zoom = 7
+            state.center = regions.get("kachin")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToKayah: state => {
-            state.center = [97.375359, 19.233860]
-            state.zoom = 7
+            state.center = regions.get("kayah")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToKayin: state => {
-            state.center = [97.786060, 17.154010]
-            state.zoom = 7
+            state.center = regions.get("kayin")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToChin: state => {
-            state.center = [93.510712, 22.166090]
-            state.zoom = 7
+            state.center = regions.get("chin")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToMon: state => {
-            state.center = [97.868420, 15.747850]
-            state.zoom = 7
+            state.center = regions.get("mon")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToRakhine: state => {
-            state.center = [94.079780, 19.408330]
-            state.zoom = 7
+            state.center = regions.get("rakhine")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToShan: state => {
-            state.center = [99.832176, 21.090860]
-            state.zoom = 7
+            state.center = regions.get("shan")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToBago: state => {
-            state.center = [96.483333, 17.333333]
-            state.zoom = 7
+            state.center = regions.get("bago")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToSagaing: state => {
-            state.center = [95.985820, 21.885380]
-            state.zoom = 7
+            state.center = regions.get("sagaing")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToTanintharyi: state => {
-            state.center = [99.013240, 12.089010]
-            state.zoom = 7
+            state.center = regions.get("tanintharyi")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToMagway: state => {
-            state.center = [94.935110, 20.149950]
-            state.zoom = 7
+            state.center = regions.get("magway")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToMandalay: state => {
-            state.center = [96.093292, 21.954510]
-            state.zoom = 7
+            state.center = regions.get("mandalay")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToYangon: state => {
-            state.center = [96.199379, 16.871311]
-            state.zoom = 7
+            state.center = regions.get("yangon")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyToAyeyarwaddy: state => {
-            state.center = [94.738101, 16.775361]
-            state.zoom = 7
+            state.center = regions.get("ayeyarwaddy")?.coordinate
+            state.zoom = ZOOM_TO_REGION
         },
         flyBack: state => {
-            state.center = [96.199379, 16.871311]
-            state.zoom = 5
+            state.center = regions.get("overall")?.coordinate
+            state.zoom = ZOOM_BACK
         },
     }
 })
@@ -87,10 +92,7 @@ export const {
     flyToRakhine,
     flyBack, } = mapCenterSlice.actions
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = (state: { mapCenter: { center: any; }; }) => state.mapCenter.center;
+export const selectCenter = (state: { mapCenter: { center: any; }; }) => state.mapCenter.center;
 export const selectZoom = (state: { mapCenter: { zoom: any } }) => state.mapCenter.zoom;
 
 export default mapCenterSlice.reducer

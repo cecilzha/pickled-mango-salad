@@ -1,6 +1,5 @@
-import React, {useMemo, useState, useCallback, useRef} from "react";
-import { Dropdown } from '@carbon/react';
-import regions from './regions.json';
+import React, { useMemo, useState, useCallback } from "react";
+import { Dropdown } from 'carbon-components-react';
 import {
     flyToBago,
     flyToRakhine,
@@ -18,25 +17,28 @@ import {
     flyToTanintharyi,
     flyBack } from "../../redux/reducers/mapCenterSlice";
 
-import { selectCount } from '../../redux/reducers/mapCenterSlice';
+import { selectCenter } from '../../redux/reducers/mapCenterSlice';
 import { useDispatch, useSelector } from "react-redux";
-import {hasStoppedMoving, isMapMoving} from "../../redux/reducers/mapEventMoveSlice";
-import store from "../../redux/store";
+import { isMapMoving } from "../../redux/reducers/mapEventMoveSlice";
+import {REGIONS, Region} from "../../constants/constants";
+
+const regions : Map<string, Region> = REGIONS
 
 const StatesDropdown = () => {
     const [items, setItems] = useState<string[]>([]);
 
     const dispatch = useDispatch();
-    const coordinate = useSelector(selectCount);
+    const coordinate = useSelector(selectCenter);
     const isPanning = useSelector(isMapMoving);
 
     useMemo(() => {
-        for(let i = 0; i < regions.regions.length; i++) {
-            setItems((prevState) => {
-                prevState.push(regions.regions.at(i).name);
-                return prevState;
-            });
-        }
+        setItems((prevState) => {
+            regions.forEach((value, key) => {
+                prevState.push(value.name)
+            })
+            return prevState
+        })
+
         return () => setItems([]);
     }, []);
 
@@ -94,23 +96,18 @@ const StatesDropdown = () => {
     }, [coordinate, isPanning]);
 
     const handleRenderSelectedItem = useCallback(() => {
-
-        if(isPanning) return "ပြည်နယ်/တိုင်းဒေသကြီးကိုမြင်ကွင်းထဲသို့ချဲ့ရန်"
-
-    }, [isPanning])
-
-    const handleSelectedItem = useCallback(() => {
         return "ပြည်နယ်/တိုင်းဒေသကြီးကိုမြင်ကွင်းထဲသို့ချဲ့ရန်"
     }, [isPanning])
 
+
     return(
         <Dropdown
-            ariaLabel="State Dropdown"
+            ariaLabel="State Selection"
             hideLabel
             id="state-dropdown"
             items={items}
+            selectedItem="ပြည်နယ်/တိုင်းဒေသကြီးကိုမြင်ကွင်းထဲသို့ချဲ့ရန်"
             renderSelectedItem={handleRenderSelectedItem}
-            selectedItem={handleSelectedItem}
             direction="top"
             onChange={onChangeDropdown}
             label="ပြည်နယ်/တိုင်းဒေသကြီးသို့ချဲ့ရန်"

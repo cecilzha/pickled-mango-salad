@@ -4,19 +4,11 @@ import * as ol from "ol";
 
 import './Map.css'
 
-import { PluggableMap } from "ol";
+import {PluggableMap} from "ol";
 import {Coordinate} from "ol/coordinate";
-import store from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import {hasBegunMoving, hasStoppedMoving, isMapMoving} from "../../redux/reducers/mapEventMoveSlice";
-import TileLayer from "ol/layer/Tile";
-import {GeoTIFF, Source, TileJSON, XYZ} from "ol/source";
-import {normalize} from "ol/color";
-import VectorTileLayer from "ol/layer/VectorTile";
-import VectorTileSource from "ol/source/VectorTile";
-import {MVT} from "ol/format";
-import {Fill, Icon, Stroke, Style} from "ol/style";
-import VectorSource from "ol/source/Vector";
+
+import {useDispatch} from "react-redux";
+import {hasBegunMoving} from "../../redux/reducers/mapEventMoveSlice";
 
 type Props = {
     center: Coordinate,
@@ -24,16 +16,14 @@ type Props = {
     children: ReactNode
 }
 
-const Map : React.FC<Props> = ({ zoom, center, children }) => {
-    const mapRef = useRef();
+const Map: React.FC<Props> = ({zoom, center, children}) => {
     const [map, setMap] = useState<PluggableMap>();
 
-    const [move, setMove] = useState();
-
-    const isMoving = useSelector(isMapMoving);
+    const mapRef = useRef<null | HTMLDivElement>(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // options to build the map object
         let options = {
             view: new ol.View({zoom, center}),
             layers: [],
@@ -41,12 +31,15 @@ const Map : React.FC<Props> = ({ zoom, center, children }) => {
             overlays: [],
         };
 
-        let mapObject : PluggableMap = new ol.Map(options);
-        mapObject.setTarget(mapRef.current);
-        setMap(mapObject);
+        let mapObject: PluggableMap = new ol.Map(options);
+        if (mapRef.current !== null) {
+            mapObject.setTarget(mapRef.current);
+            setMap(mapObject);
+        }
 
         return () => mapObject.setTarget(undefined);
     }, [mapRef]);
+
 
     useMemo(() => {
         if (!map) return;
@@ -59,21 +52,16 @@ const Map : React.FC<Props> = ({ zoom, center, children }) => {
     }, [zoom])
 
     useMemo(() => {
-        if (!map) {
-            console.log("map not loaded");
-            return;
-        }
+        if (!map) return;
 
-        map.on("movestart", () => {
+        map.on('movestart', () => {
             dispatch(hasBegunMoving())
-            console.log("started panning")
-            console.log(store.getState().mapEventMove)
         })
 
     }, [map])
 
-    return(
-        <MapContext.Provider value={ map }>
+    return (
+        <MapContext.Provider value={map}>
             <div ref={mapRef} className="ol-map">
                 {children}
             </div>

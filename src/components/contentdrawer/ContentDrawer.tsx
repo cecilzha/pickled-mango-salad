@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, ClickableTile } from '@carbon/react';
+import { Search, ClickableTile } from 'carbon-components-react';
 
 import './styles.scss';
 
