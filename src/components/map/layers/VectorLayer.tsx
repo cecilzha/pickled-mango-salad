@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import MapContext from '../MapContext';
-import OLVectorLayer from 'ol/layer/vector';
+import OLVectorLayer from 'ol/layer/Vector';
 import VectorSource from "ol/source/Vector";
 import {StyleLike} from "ol/style/Style";
 
