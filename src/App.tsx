@@ -6,21 +6,17 @@ import Shell from './components/shell/Shell';
 import StatesDropdown from "./components/states-dropdown/StatesDropdown"
 import SimpleDatePicker from "./components/datepicker/SimpleDatePicker"
 import SimpleMap from './components/map/SimpleMap'
+import NewsFeed from "./page/NewsFeed/NewsFeed";
+import {Content} from "carbon-components-react";
 
 const App = () => {
     return (
-            <div>
-                <SimpleMap />
-                <Shell/>
-                <div className='float-window'>
-                    <div className='date-picker'>
-                        <SimpleDatePicker />
-                    </div>
-                    <div className='drop-down'>
-                        <StatesDropdown/>
-                    </div>
-                </div>
-            </div>
+            <>
+                <Shell />
+                <Content>
+                    <NewsFeed />
+                </Content>
+            </>
     );
 };
 

@@ -1,0 +1,29 @@
+@use '../../../node_modules/@carbon/react/index';
+@use '../../../node_modules/@carbon/styles/scss/theme';
+
+.weather-widget {
+  width: 300px;
+  height: 200px;
+  background: theme.$background;
+  color: theme.$text-primary;
+
+  position: absolute;
+  top: 108px;
+  margin: 0.5rem;
+}
+
+.date-picker {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 48px;
+  margin: 0.5rem;
+}
+
+.drop-down {
+  width: 288px;
+
+  position: absolute;
+  bottom: 0;
+  margin: 0.5rem;
+}
