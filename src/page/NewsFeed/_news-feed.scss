@@ -2,66 +2,68 @@
 @use '@carbon/react/scss/type' as *;
 @use '@carbon/react/scss/breakpoint' as *;
 @use '@carbon/react/scss/theme' as *;
-@use './mixins.scss' as *;
+@use '@carbon/react/scss/colors' as *;
+@use '@carbon/grid';
+
+@use 'src/global/styles/global_mixins' as *;
 @use './overrides.scss';
 
-.landing-page__illo {
-  max-width: 100%;
+.news-feed__banner {
+  background-color: $background;
+  top: $spacing-09;
+  position: sticky;
+  z-index: 1;
 }
 
-.landing-page__banner {
-  padding-top: $spacing-05;
-  padding-bottom: $spacing-07 * 4;
-  padding-left: $spacing-06;
-  @include landing-page-background;
-}
-
-.landing-page__heading {
-  @include type-style('productive-heading-05');
-}
-
-.landing-page__r2 {
+.news-feed__r2 {
   margin-top: rem(-40px);
+  position: sticky;
 }
 
-.tabs-group-content {
-  padding: $spacing-10 $spacing-06;
-}
+.tabs-group-row-and-search-filter {
+  background-color: $background;
 
-.landing-page__subheading {
-  @include type-style('productive-heading-03');
+  display: flex;
+  flex-direction: row;
 
-  font-weight: 600;
-}
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-05;
+  padding-right: $spacing-05;
 
-.landing-page__p {
-  @include type-style('productive-heading-03');
-  margin-top: $spacing-06;
-  margin-bottom: $spacing-08;
-
-  @include breakpoint-between((320px + 1), md) {
-    max-width: 75%;
-  }
+  position: sticky;
+  top: 274px;
+  z-index: 7000;
 }
 
 .tabs-group {
-  background-color: $layer-01;
+  @include burmese-font;
 }
 
-.landing-page__r3 {
-  padding-top: $spacing-09;
-  padding-bottom: $spacing-09;
-  padding-left: $spacing-06;
-  @include landing-page-background;
+.expand-button {
+  @include burmese-font;
+  margin-right: $spacing-05;
 }
 
-.landing-page__label {
-  @include type-style('heading-01');
+.search-box {
+  @include burmese-font;
+  background-color: $field-02;
 }
 
-.landing-page__banner,
-.landing-page__r2,
-.landing-page__r3 {
+.cds--search-input {
+  background-color: $field-02;
+}
+
+.footer__r1 {
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-05;
+  padding-left: $spacing-07;
+  background-color: $background;
+  @include burmese-font;
+}
+
+.news-feed__banner,
+.news-feed__r2,
+.footer__r1 {
   margin-left: -20px;
   margin-right: -20px;
 
@@ -69,4 +71,22 @@
     margin-left: 0;
     margin-right: 0;
   }
+}
+
+.cds--group {
+  padding: $spacing-10 0 $spacing-10;
+}
+
+.cds--grid {
+  @include grid.flex-grid();
+  padding-left: $spacing-05;
+  padding-right: $spacing-05;
+}
+
+.footer__app-label {
+  @include type-style('heading-02');
+}
+
+.footer__link {
+  @include type-style('heading-02');
 }

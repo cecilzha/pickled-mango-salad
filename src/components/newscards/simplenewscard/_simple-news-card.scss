@@ -1,0 +1,42 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+
+@use './overrides.scss';
+@use 'src/global/styles/global_mixins' as *;
+
+.snc__container {
+  @include burmese-font;
+  margin-bottom: $spacing-07;
+}
+
+.snc__image {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+
+.snc__information-container {
+  padding: $spacing-05;
+}
+
+.snc__source {
+  padding-top: $spacing-03;
+  padding-bottom: $spacing-03;
+}
+
+.snc__description {
+  margin-top: $spacing-05;
+  margin-bottom: $spacing-05;
+}
+
+.snc__date-icon-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+

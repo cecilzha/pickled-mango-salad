@@ -20,7 +20,7 @@ import {
 import { selectCenter } from '../../redux/reducers/mapCenterSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { isMapMoving } from "../../redux/reducers/mapEventMoveSlice";
-import {REGIONS, Region} from "../../constants/constants";
+import {REGIONS, Region} from "../../global/constants/constants";
 
 const regions : Map<string, Region> = REGIONS
 

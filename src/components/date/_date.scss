@@ -1,0 +1,26 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+@import 'src/global/styles/global_mixins';
+
+.date-container {
+  width: 100%;
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-07 * 4;
+  padding-left: $spacing-05;
+}
+
+.date,
+.days-of-the-week {
+  @include burmese-font;
+}
+
+.date {
+  padding-top: $spacing-02;
+  @include type-style('productive-heading-06');
+}
+
+.days-of-the-week {
+  @include type-style('productive-heading-03');
+}

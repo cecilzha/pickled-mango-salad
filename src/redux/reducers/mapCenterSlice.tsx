@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { REGIONS, Region } from '../../constants/constants'
+import { REGIONS, Region } from '../../global/constants/constants'
 
 const regions : Map<string, Region> = REGIONS
 const ZOOM_BACK : number = 5

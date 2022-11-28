@@ -1,0 +1,16 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+
+@font-face {
+  font-family: 'Myanmar Sans Pro';
+  src: url("./MyanmarSansPro-Regular.ttf");
+}
+
+@mixin burmese-font() {
+  font-family: "Myanmar Sans Pro";
+}
+
+@mixin landing-page-background() {
+  background-color: $layer-01;
+  position: relative;
+}

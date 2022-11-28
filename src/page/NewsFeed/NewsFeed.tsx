@@ -1,95 +1,155 @@
-import React from 'react'
-import {   Breadcrumb,
-    BreadcrumbItem,
-    Button,
-    Tabs,
-    Tab,
-    Grid,
-    Column, } from 'carbon-components-react';
+import {Button, Column, Grid, Search, Tab, Tabs,} from 'carbon-components-react';
 
 // @ts-ignore
-import { TabPanel, TabPanels, TabList } from '@carbon/react';
+import {TabList, TabPanel, TabPanels} from '@carbon/react';
 
 import './_news-feed.scss'
-import Shell from "../../components/shell/Shell";
 
+import {PLATFORM_NAME} from "../../global/constants/constants";
+import Date from "../../components/date/Date";
+import SimpleNewsCard from "../../components/newscards/simplenewscard/SimpleNewsCard";
+
+/**
+ * This component represents Newspaper.
+ * It contains a news feed to display all the recent news.
+ */
 const NewsFeed = () => {
-    return (
-        <Grid className="landing-page" fullWidth>
-            <Column lg={16} md={8} sm={4} className="landing-page__banner">
-                <Breadcrumb noTrailingSlash aria-label="Page navigation">
-                    <BreadcrumbItem>
-                        <a href="/">Getting started</a>
-                    </BreadcrumbItem>
-                </Breadcrumb>
-                <h1 className="landing-page__heading">Design &amp; build with Carbon</h1>
-            </Column>
-            <Column lg={16} md={8} sm={4} className="landing-page__r2">
-                <Tabs selected={0}>
-                    <TabList className="tabs-group" aria-label="Tab navigation">
-                        <Tab>About</Tab>
-                        <Tab>Design</Tab>
-                        <Tab>Develop</Tab>
-                    </TabList>
-                    <TabPanels>
-                        <TabPanel>
-                            <Grid className="tabs-group-content">
-                                <Column md={4} lg={7} sm={4} className="landing-page__tab-content">
-                                    <h2 className="landing-page__subheading">What is Carbon?</h2>
-                                    <p className="landing-page__p">
-                                        Carbon is IBM’s open-source design system for digital products and
-                                        experiences. With the IBM Design Language as its foundation, the
-                                        system consists of working code, design tools and resources, human
-                                        interface guidelines, and a vibrant community of contributors.
-                                    </p>
-                                    <Button>Learn more</Button>
-                                </Column>
-                                <Column md={4} lg={{ span: 8, offset: 7 }} sm={4}>
-                                    <img
-                                        className="landing-page__illo"
-                                        src={`https://angular-step-3-carbon-tutorial.netlify.app/assets/tab-illo.png`}
-                                        alt="Carbon illustration"
-                                    />
-                                </Column>
-                            </Grid>
-                        </TabPanel>
-                        <TabPanel>
-                            <Grid className="tabs-group-content">
-                                <Column lg={16} md={8} sm={4} className="landing-page__tab-content">
-                                    Rapidly build beautiful and accessible experiences. The Carbon kit
-                                    contains all resources you need to get started.
-                                </Column>
-                            </Grid>
-                        </TabPanel>
-                        <TabPanel>
-                            <Grid className="tabs-group-content">
-                                <Column lg={16} md={8} sm={4} className="landing-page__tab-content">
-                                    Carbon provides styles and components in Vanilla, React, Angular,
-                                    and Vue for anyone building on the web.
-                                </Column>
-                            </Grid>
-                        </TabPanel>
-                    </TabPanels>
-                </Tabs>
-            </Column>
-            <Column lg={16} md={8} sm={4} className="landing-page__r3">
-                <Grid>
-                    <Column md={4} lg={4} sm={4}>
-                        <h3 className="landing-page__label">The Principles</h3>
-                    </Column>
-                    <Column md={4} lg={4} sm={4}>
-                        Carbon is Open
-                    </Column>
-                    <Column md={4} lg={4} sm={4}>
-                        Carbon is Modular
-                    </Column>
-                    <Column md={4} lg={4} sm={4}>
-                        Carbon is Consistent
-                    </Column>
-                </Grid>
-            </Column>
-        </Grid>
-    );
+    return (<div>
+            <Grid fullWidth>
+                <Column lg={16} md={8} sm={4} className="news-feed__banner">
+                    <Date/>
+                </Column>
+                <Column lg={16} md={8} sm={4} className="news-feed__r2">
+                    <Tabs selected={0}>
+                        <div className="tabs-group-row-and-search-filter">
+                            <TabList className="tabs-group" aria-label="Tab navigation">
+                                <Tab>အားလုံး</Tab>
+                                <Tab>ပြည်တွင်ရေးရာ</Tab>
+                                <Tab>နိုင်ငံတကာရေးရာ</Tab>
+                                <Tab>စီးပွားရေး</Tab>
+                                <Tab>ဆောင်းပါး</Tab>
+                                <Tab>အခြား</Tab>
+                            </TabList>
+                            <Button kind="tertiary" className="expand-button">စစ်ထုတ်ရန်</Button>
+                            <Search
+                                size="lg"
+                                placeholder="ဆောင်းပါးများရှာဖွေရန်"
+                                labelText="Search"
+                                className="search-box"
+                                closeButtonLabelText="Clear search input"
+                                id="search-1"
+                                onChange={() => {
+                                }}
+                                onKeyDown={() => {
+                                }}
+                            />
+                        </div>
+                        <TabPanels>
+                            <TabPanel>
+                                <div className="cds--group">
+                                    <div className="cds--grid">
+                                        <div className="cds--row">
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cds--grid">
+                                        <div className="cds--row">
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                                <SimpleNewsCard
+                                                    title='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ'
+                                                    description='မြန်မာနိုင်ငံမှာ မှတ်ပုံတင်မရှိသူ ၁၂ သန်းကျော်ရှိနေ '
+                                                    source="ဘီဘီစီ မြန်မာ"
+                                                    url='www.google.com'
+                                                    imageUrl='https://images.unsplash.com/photo-1588097281266-310cead47879?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80'
+                                                />
+                                            </div>
+                                            <div className="cds--col">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </TabPanel>
+                        </TabPanels>
+                    </Tabs>
+                </Column>
+                <Footer/>
+            </Grid>
+        </div>)
+}
+
+/**
+ * This component represents a footer, which contains useful links about the application as follows:
+ * (1) အက်ပ်အကြောင်း
+ * (2) သတ်မှတ်ချက်များ
+ * (3) ဆက်သွယ်ရန်
+ * (4) ကြေငြာချက်များ
+ */
+const Footer = () => {
+    return (<Column lg={16} md={8} sm={4} className="footer__r1">
+            <Grid>
+                <Column md={4} lg={4} sm={4} className="footer__link">
+                    <h3 className="footer__app-label">{PLATFORM_NAME}</h3>
+                </Column>
+                <Column className="footer__link" md={4} lg={4} sm={4}/>
+                <Column className="footer__link" md={2} lg={2} sm={2}>အက်ပ်အကြောင်း</Column>
+                <Column className="footer__link" md={2} lg={2} sm={2}>သတ်မှတ်ချက်များ</Column>
+                <Column className="footer__link" md={2} lg={2} sm={2}>ဆက်သွယ်ရန်</Column>
+                <Column className="footer__link" md={2} lg={2} sm={2}>ကြေငြာချက်များ</Column>
+            </Grid>
+        </Column>)
 }
 
 export default NewsFeed;
