@@ -22,5 +22,6 @@
 }
 
 .days-of-the-week {
-  @include type-style('productive-heading-03');
+  @include type-style('productive-heading-04');
+  margin-bottom: $spacing-02;
 }

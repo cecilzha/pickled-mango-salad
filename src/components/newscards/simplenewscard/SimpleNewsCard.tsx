@@ -25,7 +25,7 @@ const SimpleNewsCard = (props: SimpleNewsCardProps) => {
             <img src={imageUrl} className="snc__image"/>
             <div className="snc__information-container">
                 <h4 className="snc__source">{source}</h4>
-                <h3 className="snc__title">{title}</h3>
+                <h4 className="snc__title">{title}</h4>
                 <p className="snc__description">{description}</p>
                 <div className="snc__date-icon-container">
                     <p className="snc__published-date">၂၂ နိုဝင်ဘာလ ၂၀၂၂</p>

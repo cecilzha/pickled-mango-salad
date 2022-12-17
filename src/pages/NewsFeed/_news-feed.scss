@@ -74,13 +74,12 @@
 }
 
 .cds--group {
-  padding: $spacing-10 0 $spacing-10;
+  //padding: $spacing-10 0 $spacing-10;
+  min-height: 75vh;
 }
 
 .cds--grid {
   @include grid.flex-grid();
-  padding-left: $spacing-05;
-  padding-right: $spacing-05;
 }
 
 .footer__app-label {
@@ -89,4 +88,12 @@
 
 .footer__link {
   @include type-style('heading-02');
+}
+
+.story-container {
+  columns: 4;
+}
+
+.story {
+  display: inline-flex;
 }
